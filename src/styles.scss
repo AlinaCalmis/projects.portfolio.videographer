@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face{
+    font-family: Poppins Thin;
+    font-style: normal;
+    src: url('../../assets/font/Poppins-Thin.ttf');
+}
+@font-face{
+    font-family: Poppins Medium;
+    font-style: normal;
+    src: url('../../assets/font/Poppins-Medium.ttf');
+}
+@font-face{
+    font-family: Poppins;
+    font-style: normal;
+    src: url('../../assets/font/Poppins-Regular.ttf');
+}
+@font-face{
+    font-family: Poppins Semibold;
+    font-style: normal;
+    src: url('../../assets/font/Poppins-SemiBold.ttf');
+}
+@font-face{
+    font-family: Poppins Bold;
+    font-style: normal;
+    src: url('../../assets/font/Poppins-Bold.ttf');
+}
+@font-face{
+    font-family: Bebas;
+    font-style: normal;
+    src: url('../../assets/font/BebasNeue-Regular.ttf');
+}
+@font-face{
+    font-family: Raleway;
+    font-style: normal;
+    src: url('../../assets/font/Raleway-VariableFont_wghts.ttf');
+}
+@font-face{
+    font-family: Raleway Medium;
+    font-style: normal;
+    src: url('../../assets/font/Raleway-Medium.ttf');
+}
+@font-face{
+    font-family: Whisper;
+    font-style: normal;
+    src: url('../../assets/font/Whisper-Regular.ttf');
+}
+
+body{
+    font-family: 'Poppins';
+    background-color: black;
+}

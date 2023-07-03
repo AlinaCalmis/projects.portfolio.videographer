@@ -1,0 +1,166 @@
+
+
+section[id*="balkan"]{
+    .row > *{
+        padding-left: unset !important;
+        padding-right: unset !important;
+    }
+}
+
+.balkan-hero-video,
+.balkan-hero-bg{
+    position:absolute;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    object-fit: cover;
+    max-width: unset;
+    transition: opacity 1.2s cubic-bezier(0.98, 0.45, 1, 1);
+}
+
+.balkan-hero-video {
+    z-index: 0;
+}
+
+.balkan-hero-bg {
+    z-index: 1;
+}
+
+.balkan-hero-bg-r{
+    left:unset;
+    right: 0;
+}
+
+.balkan-hero-slider {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    max-width: 50%;
+    overflow: hidden;
+    z-index: 1;
+    transition: max-width .8s linear;
+
+    // &:hover{
+    //     width: 80%;
+    // }
+
+    &:last-child {
+        right: 0;
+        left: unset;
+        transition-delay: .25s;
+        .balkan-hero-video{
+            right: 0;
+            left: unset !important;
+        }
+    }
+}
+.hero-container{
+    min-height: 100vh;
+    .balkan-row {
+        min-height: 100vh !important;
+    }
+}
+.balkan-row {
+    position: relative;
+    display: flex;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.balkan-hero-slider-opened{
+    z-index: 2;
+    &.balkan-hero-slider{
+        width: 90%;
+        max-width:90%
+    }
+    // transition: all 1s;
+    .balkan-hero-video{
+        // z-index: 2;
+    }
+}
+
+.balkan-films-logo{
+    position: relative;
+    // z-index: 3;
+    .logo-big,
+    .logo-text{
+        z-index: 3;
+        left: 37%;
+        svg {
+            filter: drop-shadow(2px 2px 4px rgba(62, 42, 20, 0.507));
+        }
+    }
+    .logo-big{
+        position: absolute;
+        svg{
+            width: 400px;
+            height: 400px;
+        }
+    }
+    .logo-text{
+        // display: none;
+        opacity: 0;
+        // position: fixed;
+        position: absolute;
+        top: 224px;
+        width: 100vw;
+        left: unset;
+        // background-color: rgba(61, 59, 61, 0.4);
+        height: 110px;
+        svg {
+            position: absolute;
+            left: 41.8%;
+            width: 253px;
+            height: 100px;
+        }
+    }
+    .fixed {
+        position: fixed;
+        top:unset;
+
+    }
+    .balkan-hero-headline{
+        position: absolute;
+        z-index: 3;
+        top: 367px;
+        left: 28%;
+        color: white;
+    }
+}
+
+.balkan-video-container:not(.balkan-hero-slider) {
+    max-width: inherit;
+    overflow: hidden;
+}
+
+.balkan-cinematography {
+    .row {
+        margin-bottom: -8px;
+        >* {
+            padding-inline: unset !important;
+        }
+    }
+}
+
+.headline {
+    min-height: 20rem;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    margin-left: 2rem;
+}
+
+.accent-md {
+    font-family: Whisper;
+    font-size: 5rem;
+    margin-top: -2rem;
+    line-height: 40px;
+    letter-spacing: .275rem;
+}
+
+.row{
+    overflow-y: hidden;
+}
