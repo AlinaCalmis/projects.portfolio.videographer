@@ -8,8 +8,10 @@ import LazyLoad, { ILazyLoadInstance } from 'vanilla-lazyload';
 })
 export class LandingPageComponent implements OnInit{
   @ViewChild('balkan-hero-slider') heroSlider!: ElementRef;
-
-  constructor(){}
+  burgerToggled:Boolean;
+  constructor(){
+    this.burgerToggled = false;
+  }
 
   ngOnInit(): void {
     console.log("ONINIT")
@@ -163,6 +165,15 @@ export class LandingPageComponent implements OnInit{
       
     // })
      
+  }
+
+  toggleBurger(){
+    this.burgerToggled = !this.burgerToggled;
+    console.log(this.burgerToggled)
+
+    var burgerBody = document.querySelector('.burger-body');
+    burgerBody?.classList.toggle('visible');
+    burgerBody?.classList.toggle('hidden');
   }
   
 }
