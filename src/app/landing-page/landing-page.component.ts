@@ -14,31 +14,31 @@ export class LandingPageComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log("ONINIT")
+    // console.log("ONINIT")
     function logElementEvent(eventName: string, element: HTMLElement) {
-      console.log(Date.now(), eventName, element.getAttribute("data-src"));
+      // console.log(Date.now(), eventName, element.getAttribute("data-src"));
     }
     const callback_enter = function (element: any) {
-      logElementEvent("🔑 ENTERED", element);
+      // logElementEvent("🔑 ENTERED", element);
     };
      const callback_exit = function (element: any) {
-      logElementEvent("🚪 EXITED", element);
+      // logElementEvent("🚪 EXITED", element);
     };
      const callback_loading = function (element: any) {
-      logElementEvent("⌚ LOADING", element);
+      // logElementEvent("⌚ LOADING", element);
     };
      const callback_loaded = function (element: any) {
-      logElementEvent("👍 LOADED", element);
+      // logElementEvent("👍 LOADED", element);
     };
      const callback_error = function (element: any) {
-      logElementEvent("💀 ERROR", element);
-      element.src = "https://via.placeholder.com/440x560/?text=Error+Placeholder";
+      // logElementEvent("💀 ERROR", element);
+      // element.src = "https://via.placeholder.com/440x560/?text=Error+Placeholder";
     };
      const callback_finish = function () {
-      logElementEvent("✔️ FINISHED", document.documentElement);
+      // logElementEvent("✔️ FINISHED", document.documentElement);
     };
      const callback_cancel = function (element: any) {
-      logElementEvent("🔥 CANCEL", element);
+      // logElementEvent("🔥 CANCEL", element);
     };
   
     const ll = new LazyLoad({
@@ -53,37 +53,17 @@ export class LandingPageComponent implements OnInit{
       // For debugging purposes
       threshold: 0
     });
-
-    /* Set the heights of rows */
-    var rows = document.querySelectorAll(".balkan-row");
-    console.log("IACATALI", rows);
-    // for (var i = 0; i < rows.length; i++) {
-    //   console.log(rows[i], rows[i].querySelectorAll("video"));
-    //   var min = Array.from(rows[i].querySelectorAll("video")).reduce((min, child)=>{
-    //     console.log(min, child.offsetHeight);
-    //     return Math.min(min, child.offsetHeight)
-    //   }, Infinity)
-    //   console.log(min);
-    //   (rows[i] as HTMLElement).style.height = min + "px";
-    //   (rows[i] as HTMLElement).style.minHeight = min + "px";
-    //   (rows[i] as HTMLElement).style.maxHeight = min + "px";
-
-    //   Array.from(rows[i].querySelectorAll("video")).every((element) => {
-    //     element.style.height = min + "px";
-    //     element.style.minHeight = min + "px";
-    //   })
-    // }
   }
 
   ngAfterViewInit(){
-    console.log("heyy",this.heroSlider);
-    console.log("heyy",document.getElementsByClassName('balkan-hero-slider'));
+    // console.log("heyy",this.heroSlider);
+    // console.log("heyy",document.getElementsByClassName('balkan-hero-slider'));
     var heroContainer = document.querySelector('.hero-container');
     var imgContainers = document.querySelectorAll('.balkan-hero-slider');
 
       
 
-    heroContainer!.addEventListener('mousemove', (event) => {
+    heroContainer?.addEventListener('mousemove', (event) => {
         // console.log(event);
         if(event.target instanceof HTMLElement){
           if(event.target.classList.contains('balkan-hero-bg')){
@@ -111,23 +91,20 @@ export class LandingPageComponent implements OnInit{
                 parent?.classList.remove("balkan-hero-slider-opened");
               }, 1400);
             } 
-
           }
-
-          
-            
-          
         }
       })
       
-    heroContainer!.addEventListener('mouseleave', (event) => {
+    heroContainer?.addEventListener('mouseleave', (event) => {
       // console.log("leaving, bye");
       var opened = heroContainer!.querySelector('.balkan-hero-slider-opened') as HTMLElement;
-      opened!.style.maxWidth = '50%';
-      (opened.firstElementChild! as HTMLElement).style.opacity = '1';
-      setTimeout(() => {
-        opened!.classList.remove('balkan-hero-slider-opened');
-      }, 1400);
+      if(opened){
+        opened!.style.maxWidth = '50%';
+        (opened.firstElementChild! as HTMLElement).style.opacity = '1';
+        setTimeout(() => {
+          opened!.classList.remove('balkan-hero-slider-opened');
+        }, 1400);
+      }
     })
 
     window.addEventListener('scroll', (event) => {
@@ -136,9 +113,9 @@ export class LandingPageComponent implements OnInit{
       var rect = logo!.getBoundingClientRect();
       var reff = document.querySelector('.reff');
       var rectReff = reff!.getBoundingClientRect();
-      console.log("scrolling", rect.top);
+      // console.log("scrolling", rect.top);
       if (rect.top <= 0) {
-        console.log("at the top");
+        // console.log("at the top");
         logo!.classList.add("fixed");
         logoB!.style.opacity = "0";
         logo!.style.opacity = "1";
@@ -148,28 +125,14 @@ export class LandingPageComponent implements OnInit{
           logo.classList.remove('fixed')
           logoB!.style.opacity = "1";
           logo!.style.opacity = "0";
-        // console.log("still on page");
-        
       }
     })
-    //   const observer = new IntersectionObserver((entries) => {
-    //     if (entries[0].isIntersecting) {
-    //       console.log('Element is currently visible');
-    //       // (document.querySelector(".logo-text") as HTMLElement)!.style.opacity = '0';
-    //     } else {
-    //       // (document.querySelector(".logo-text") as HTMLElement)!.style.opacity = '1';
-    //       console.log('Element is currently not visible');
-    //     }
-    //   });
-    //   observer.observe(document.querySelector('.logo-big')!);
-      
-    // })
      
   }
 
   toggleBurger(){
     this.burgerToggled = !this.burgerToggled;
-    console.log(this.burgerToggled)
+    // console.log(this.burgerToggled)
 
     var burgerBody = document.querySelector('.burger-body');
     burgerBody?.classList.toggle('visible');
