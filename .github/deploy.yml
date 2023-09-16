@@ -1,0 +1,47 @@
+# Triggers a build each time you push to the 'live' branch, and uploads it to the gh-pages branch using the gh-pages utility
+# Need to set the secret "ACTIONS_DEPLOY_ACCESS_TOKEN"
+
+name: deploy
+
+on:
+  push:
+    branches: [ live ]
+
+jobs:
+  build:
+    # runs-on: mq-ubuntu-20
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - name: Install deps
+      # run: npm install
+      run: npm install --include=dev
+
+    # - name: Run the tests and generate coverage report
+    #   run: npm test -- --coverage
+
+    # - name: Upload coverage to Codecov
+    #   uses: codecov/codecov-action@v1
+
+    - name: Predeploy (build)
+      run: npm run predeploy
+
+    - name: Deploy
+      run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
+        git remote set-url origin https://${github_token}@github.com/${repository}
+        npm run deploy
+      env:
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        # Update: nope: r/w was already enabled for it and it didn't work..
+        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        repository: ${{ github.repository }}
