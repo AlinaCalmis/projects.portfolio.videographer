@@ -1,0 +1,45 @@
+name: deploy
+
+on:
+  push:
+    branches: [ live ]
+
+jobs:
+  build:
+    runs-on: mq-ubuntu-20
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - name: Install deps
+      run: npm install
+
+    # - name: Run the tests and generate coverage report
+    #   run: npm test -- --coverage
+
+    # - name: Upload coverage to Codecov
+    #   uses: codecov/codecov-action@v1
+
+    - name: Predeploy (build)
+      run: npm run predeploy
+
+    - name: Deploy
+      run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
+        git remote set-url origin https://${github_token}@github.com/${repository}
+        npm run deploy
+      env:
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        # Update: nope: r/w was already enabled for it and it didn't work..
+        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        # # github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        # # Works with r/w access enabled in repo settings, as per https://github.com/tschaub/gh-pages/issues/429#issuecomment-1126987413
+        # github_token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
