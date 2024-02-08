@@ -77,7 +77,7 @@ export class LandingPageComponent implements OnInit{
 
             if((parent!.firstChild == img && !img.classList.contains('balkan-hero-bg-r') && (event as MouseEvent).clientX <= firstFourth) ||
             (parent!.firstChild == img && img.classList.contains('balkan-hero-bg-r') && (event as MouseEvent).clientX >= lastFourth)){
-              parent!.style.maxWidth = '90%'
+              parent!.style.maxWidth = '94%'
               img!.style.opacity = '0';
               if(heroContainer?.querySelector(".balkan-hero-slider-opened"))
                 heroContainer.querySelector(".balkan-hero-slider-opened")?.classList.remove("balkan-hero-slider-opened");
