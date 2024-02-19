@@ -1,0 +1,25 @@
+Imaginile din sectiunea HERO trebuie sa aiba un overlay intunecat pentru a pune in evidenta amploarea logoului.
+
+-------- Cum functioneaza randurile? -------- 
+
+(de verificat in landing-page.component.html comentariile "FIRST ROW", "SECOND ROW" si "THIRD ROW")
+
+Pentru a utiliza tot spatiul din pagina in mod optim am folosit sistemul de flex cu 12 coloane. 
+Pentru a intelege mai bine, imagineaza-ti ca imparti ecranul in 12 coloane imaginare. 6 coloane vor ocupa jumatate de ecran.
+Prin urmare, daca sunt 8 coloane vor ocupa aproximativ 3/4 din ecran. Iar daca sunt 4 coloane vor ocupa 1/3 din spatiul ecranului.
+
+In fisierul indicat mai sus am lasat 3 comentarii, a se cauta dupa "FIRST ROW", "SECOND ROW" si "THIRD ROW", care explica cum sunt 
+afisate videoclipuletele in ecran. Daca se doreste repetarea unei structuri, TREBUIE sa fie copiata intreaga sectiune, adica
+intreg tagul <section ...> ... </section>, pentru a pastra stilurile intacte.
+
+
+
+-------- Titlul videoclipurilor -------- 
+
+Recomand utilizarea titlurilor care nu contin spatii si caractere speciale.
+
+-------- About section ---------
+
+In sectiunea "balkan-about" de modificat textul din cel generic in unul potrivit acestei sectiuni. 
+Recomand folosirea unei poze profesionale a videografului.
+
