@@ -305,43 +305,46 @@ h2{
         margin-bottom: 2rem;
         padding-inline: 1rem;;
 
-        button {
+        .btn-instagram,
+        .btn-email,
+        .btn-phone {
             background-color: transparent;
             color: var(--text-color);
             width: fit-content;
             position: relative;
+            padding: 0.5rem;
 
-            &.btn-instagram{
+            &::before{
+                top: 7px;
+                // left: -16px;
+                // height: 24px;
+                position: inherit;
+            }
+        }
+            .btn-instagram{
                 &::before{
                     content: url(../../assets/icons/instagram.svg);
                 }
             }
-            &.btn-email{
+            .btn-email{
                 &::before{
                     content: url(../../assets/icons/email.svg);
                 }
             }
-            &.btn-phone{
+            .btn-phone{
                 &::before{
                     content: url(../../assets/icons/phone.svg);
                 }
             }
 
-            &.btn-instagram, &.btn-email, &.btn-phone {
-                &::before{
-                    top: 7px;
-                    // left: -16px;
-                    // height: 24px;
-                    position: inherit;
-                }
-            }
+            
 
             a{
                 color: white;
                 text-decoration: none;
                 font-size: 14px
             }
-        }
+        
 
         ul {
             list-style-type: none;
