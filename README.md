@@ -1,3 +1,4 @@
+# Lucian
 ## Install
 When you change node version, change it in both:
 - .nvmrc (useful when using nvm)
@@ -6,6 +7,8 @@ When you change node version, change it in both:
 If using nvm, run `nvm install`
 Then `nvm use` each time you open the project
 
+## Release
+Simply pus to the live branch
 
 --
 # VideographerPortfolio
