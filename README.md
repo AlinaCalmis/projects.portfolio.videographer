@@ -8,7 +8,8 @@ If using nvm, run `nvm install`
 Then `nvm use` each time you open the project
 
 ## Release
-Simply pus to the live branch
+Simply push to the live branch, see .github/deploy.yml for more info
+Note: sometimes github disables pages for some reason? wtf
 
 --
 # VideographerPortfolio
