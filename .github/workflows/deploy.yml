@@ -62,8 +62,15 @@ jobs:
         git config user.email github-actions@github.com
         target_url="https://${github_token}@github.com/${target_repo}"
         git remote add origin "$target_url"
-        git fetch --depth=50 origin gh-pages
-        git checkout gh-pages || git checkout --orphan gh-pages
+        
+        # Fetch gh-pages branch if it exists, otherwise create it
+        if git ls-remote --heads "$target_url" gh-pages; then
+          git fetch --depth=50 origin gh-pages
+          git checkout gh-pages
+        else
+          git checkout --orphan gh-pages
+        fi
+        
         git add .
         git commit -m "Deploy from https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
         
