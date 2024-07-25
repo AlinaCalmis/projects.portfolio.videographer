@@ -1,3 +1,13 @@
+## Install
+When you change node version, change it in both:
+- .nvmrc (useful when using nvm)
+- .node-version (useful as a general standard, like, .python-version)
+
+If using nvm, run `nvm install`
+Then `nvm use` each time you open the project
+
+
+--
 # VideographerPortfolio
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
