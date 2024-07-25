@@ -31,7 +31,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/CNAME"
+              "src/CNAME",
+              "src/tobacco"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -96,7 +97,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/CNAME",
+              "src/tobacco"
             ],
             "styles": [
               "src/styles.scss"

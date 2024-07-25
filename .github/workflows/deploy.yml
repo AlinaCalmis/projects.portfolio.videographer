@@ -33,15 +33,58 @@ jobs:
     - name: Predeploy (build)
       run: npm run predeploy
 
-    - name: Deploy
+    # - name: Deploy
+    #   run: |
+    #     git config --global user.name $user_name
+    #     git config --global user.email $user_email
+    #     git remote set-url origin https://${github_token}@github.com/balkanfilms.gr.website.live
+    #     npm run deploy
+    #   env:
+    #     user_name: 'github-actions[bot]'
+    #     user_email: 'github-actions[bot]@users.noreply.github.com'
+    #     # Update: nope: r/w was already enabled for it and it didn't work..
+    #     github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+    #     repository: ${{ github.repository }}
+
+
+  
+    # To allow this repo to push to another repo, go to https://github.com/<username>/<target_repo>/settings/actions
+    # and under Access change to "Accessible from repositories in the '<your org>' organization" (not sure how it works for personal)
+    - name: Deploy to target live repo
       run: |
-        git config --global user.name $user_name
-        git config --global user.email $user_email
-        git remote set-url origin https://${github_token}@github.com/${repository}
-        npm run deploy
+        target_repo="${{ github.repository_owner }}/${target_repo_pref}balkanfilms.gr.website.live.git"
+
+        tmp_dir=$(mktemp -d)
+        cp -r dist/videographer-portfolio/* $tmp_dir/
+        cd $tmp_dir
+        git init
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        target_url="https://${github_token}@github.com/${target_repo}"
+        git remote add origin "$target_url"
+        
+        # Fetch gh-pages branch if it exists, otherwise create it
+        if git ls-remote --heads "$target_url" gh-pages; then
+          git fetch --depth=50 origin gh-pages
+          git checkout gh-pages
+        else
+          git checkout --orphan gh-pages
+          git rm -rf .
+          echo "Initial commit" > README.md
+          git add README.md
+          git commit -m "Initial commit"
+          git push origin gh-pages
+        fi
+        
+        git add .
+        git commit -m "Deploy from https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+        
+        echo "Force-pushing to $target_url"
+        # Only keep latest 50 commits
+        if [ $(git rev-list --count HEAD) -ge 50 ]; then
+            git push --force origin `git rev-parse HEAD~50`:gh-pages
+        else
+            git push --force origin gh-pages
+        fi
       env:
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
-        # Update: nope: r/w was already enabled for it and it didn't work..
         github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-        repository: ${{ github.repository }}
