@@ -69,6 +69,11 @@ jobs:
           git checkout gh-pages
         else
           git checkout --orphan gh-pages
+          git rm -rf .
+          echo "Initial commit" > README.md
+          git add README.md
+          git commit -m "Initial commit"
+          git push origin gh-pages
         fi
         
         git add .
